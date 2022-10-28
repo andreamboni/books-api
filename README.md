@@ -2,4 +2,4 @@
 
 ## TODO: 
 
-+ Cardinalidade da tabela
++ Cardinalidade banco 
