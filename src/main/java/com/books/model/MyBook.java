@@ -8,13 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+// @Entity
 public class MyBook {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	private Book book;
+	private BookModel book;
 	private Shelf shelf;
 	private Date startRead;
 	private Date endRead;
@@ -27,11 +27,11 @@ public class MyBook {
 		this.id = id;
 	}
 
-	public Book getBook() {
+	public BookModel getBook() {
 		return book;
 	}
 
-	public void setBook(Book book) {
+	public void setBook(BookModel book) {
 		this.book = book;
 	}
 
