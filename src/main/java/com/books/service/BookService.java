@@ -1,6 +1,7 @@
 package com.books.service;
 
-import org.apache.catalina.connector.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,6 @@ public class BookService {
     public ResponseEntity<?> addNewBook(BookModel book) {
 
         bookRepository.save(book);
-
         return ResponseEntity.ok().body(book);
 
     }

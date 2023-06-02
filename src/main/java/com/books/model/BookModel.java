@@ -1,30 +1,59 @@
 package com.books.model;
 
-import java.time.LocalDate;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
+@Table(name = "books")
 public class BookModel {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
+
 	private String collection;
+
+	@Column(nullable = false)
 	private String title;
+
+	@Column(nullable = false)
 	private String author;
+
+	@Column(nullable = false)
 	private String publisher;
+
+	@Column(nullable = false)
 	private String type;
+
+	@Column(nullable = false)
 	private String format;
+
+	@Column(nullable = false)
 	private Integer pages;
+
+	@Column(nullable = false)
 	private Integer edition;
+
+	@Column(nullable = false)
 	private Integer editionYear;
+
+	// @Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private String genres;
+
+	@Column(nullable = false)
 	private String finishing;
+
+	@Column(nullable = false)
 	private String language;
+
+	@Column(nullable = false)
 	private String country;
+
+	@Column(nullable = false)
 	private Integer bookQuantity;
 
 	public Long getId() {
