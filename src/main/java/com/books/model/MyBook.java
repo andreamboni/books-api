@@ -9,7 +9,7 @@ public class MyBook {
 	// @Id
 	// @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	private BookModel book;
+	private Livro book;
 	private Shelf shelf;
 	private Date startRead;
 	private Date endRead;
@@ -22,11 +22,11 @@ public class MyBook {
 		this.id = id;
 	}
 
-	public BookModel getBook() {
+	public Livro getBook() {
 		return book;
 	}
 
-	public void setBook(BookModel book) {
+	public void setBook(Livro book) {
 		this.book = book;
 	}
 

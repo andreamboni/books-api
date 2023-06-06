@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.books.model.BookModel;
+import com.books.model.Livro;
 import com.books.repository.BookRepository;
 import com.books.service.BookService;
 
@@ -27,12 +27,12 @@ public class BooksAPIController {
 	private BookService bookService;
 
 	@GetMapping
-	public List<BookModel> getAllMyBooks() {
+	public List<Livro> getAllMyBooks() {
 		return bookRepository.findAll();
 	}
 	
 	@PostMapping(value="addBook")
-	public ResponseEntity<?> addBook(@RequestBody BookModel book) {
+	public ResponseEntity<?> addBook(@RequestBody Livro book) {
 		return bookService.addNewBook(book);
 	}
 
