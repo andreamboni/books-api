@@ -11,29 +11,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.books.model.Livro;
-import com.books.repository.BookRepository;
-import com.books.service.BookService;
+import com.books.model.Autor;
+import com.books.repository.AutorRepository;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "autores")
 @CrossOrigin
-public class BooksAPIController {
+public class AutorController {
 
-	@Autowired
-	private BookRepository bookRepository;
+    @Autowired
+    private AutorRepository autorRepository;
 
-	@Autowired
-	private BookService bookService;
+    @GetMapping(path = "getAutores")
+    public ResponseEntity<List<Autor>> getAutor() {
+        return ResponseEntity.ok(autorRepository.findAll());
+    }
 
-	@GetMapping
-	public List<Livro> getAllMyBooks() {
-		return bookRepository.findAll();
-	}
-	
-	@PostMapping(value="addBook")
-	public ResponseEntity<?> addBook(@RequestBody Livro book) {
-		return bookService.addNewBook(book);
-	}
+    @PostMapping(path = "addAutor")
+    public ResponseEntity<Autor> addAutor(@RequestBody Autor autor) {
+        return ResponseEntity.ok(autorRepository.save(autor));
+    }
 
 }

@@ -5,13 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.books.model.Livro;
-import com.books.repository.BookRepository;
+import com.books.repository.LivroRepository;
 
 @Service
-public class BookService {
+public class LivroService {
 
     @Autowired
-    private BookRepository bookRepository;
+    private LivroRepository bookRepository;
 
     public ResponseEntity<?> addNewBook(Livro book) {
 

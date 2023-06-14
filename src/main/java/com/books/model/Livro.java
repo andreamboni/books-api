@@ -1,7 +1,5 @@
 package com.books.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,17 +7,21 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.books.model.enums.Acabamento;
 import com.books.model.enums.Idioma;
 import com.books.model.enums.Pais;
 import com.books.model.enums.Tipo;
+import com.books.request.LivroRequest;
 
 @Entity
 @Table(name = "livros")
 public class Livro {
 
+	// @TableGenerator(name = "id_generator", table = "livros", pkColumnName = "sequence_name", valueColumnName = "next_value", allocationSize = 1, initialValue = 100)
 	@Id	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
@@ -28,16 +30,19 @@ public class Livro {
 	@Column(nullable = false)
 	private String titulo;
 
-	@Column(nullable = false)
-	private String autor;
+	@ManyToOne
+	@JoinColumn(name = "autor_id")
+	private Autor autor;
 
 	@Column(nullable = false)
 	private String editora;
 
-	@Column(nullable = false) @Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 
-	@Column(nullable = false) @Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private Formato formato;
 
 	@Column(nullable = false)
@@ -50,19 +55,42 @@ public class Livro {
 	private Integer anoEdicao;
 
 	@Column(nullable = false)
-	private List<String> genero;
+	private String generos;
 
-	@Column(nullable = false) @Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private Acabamento acabamento;
 
-	@Column(nullable = false) @Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private Idioma idioma;
 
-	@Column(nullable = false) @Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private Pais pais;
 
 	@Column(nullable = false)
-	private Integer quantideLivros;
+	private Integer quantidadeLivros;
+
+	public Livro() {
+	}
+
+	public Livro(LivroRequest request, Autor autor) {
+		this.colecao = request.getColecao();
+		this.titulo = request.getTitulo();
+		this.autor = autor;
+		this.editora = request.getEditora();
+		this.tipo = request.getTipo();
+		this.formato = request.getFormato();
+		this.quantidadePaginas = request.getQuantidadePaginas();
+		this.edicao = request.getEdicao();
+		this.anoEdicao = request.getAnoEdicao();
+		this.generos = request.getGenero();
+		this.acabamento = request.getAcabamento();
+		this.idioma = request.getIdioma();
+		this.pais = request.getPais();
+		this.quantidadeLivros = request.getQuantideLivros();
+	}
 
 	public Long getId() {
 		return id;
@@ -71,7 +99,7 @@ public class Livro {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getColecao() {
 		return colecao;
 	}
@@ -88,11 +116,11 @@ public class Livro {
 		this.titulo = titulo;
 	}
 
-	public String getAutor() {
+	public Autor getAutor() {
 		return autor;
 	}
 
-	public void setAutor(String autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 
@@ -144,12 +172,12 @@ public class Livro {
 		this.anoEdicao = anoEdicao;
 	}
 
-	public List<String> getGenero() {
-		return genero;
+	public String getGeneros() {
+		return generos;
 	}
 
-	public void setGenero(List<String> genero) {
-		this.genero = genero;
+	public void setGeneros(String generos) {
+		this.generos = generos;
 	}
 
 	public Acabamento getAcabamento() {
@@ -176,12 +204,12 @@ public class Livro {
 		this.pais = pais;
 	}
 
-	public Integer getQuantideLivros() {
-		return quantideLivros;
+	public Integer getQuantidadeLivros() {
+		return quantidadeLivros;
 	}
 
-	public void setQuantideLivros(Integer quantideLivros) {
-		this.quantideLivros = quantideLivros;
+	public void setQuantidadeLivros(Integer quantidadeLivros) {
+		this.quantidadeLivros = quantidadeLivros;
 	}
 
 }
