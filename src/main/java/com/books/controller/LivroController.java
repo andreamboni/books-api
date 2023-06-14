@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.books.model.Autor;
+import com.books.model.Idioma;
 import com.books.model.Livro;
+import com.books.model.Pais;
 import com.books.repository.AutorRepository;
+import com.books.repository.IdiomaRepository;
 import com.books.repository.LivroRepository;
+import com.books.repository.PaisRepository;
 import com.books.request.LivroRequest;
 
 @RestController
@@ -28,6 +32,12 @@ public class LivroController {
 	@Autowired
 	private AutorRepository autorRepository;
 
+	@Autowired
+	private IdiomaRepository idiomaRepository;
+
+	@Autowired
+	private PaisRepository paisRepository;
+
 	@GetMapping(value = "getLivros")
 	public List<Livro> getAllMyBooks() {
 		return livroRepository.findAll();
@@ -36,12 +46,22 @@ public class LivroController {
 	@PostMapping(value = "addLivro")
 	public ResponseEntity<?> addBook(@RequestBody LivroRequest request) {
 		Autor autor = autorRepository.findByNome(request.getAutor());
-
+		Idioma idioma = idiomaRepository.findByNome(request.getIdioma());
+		Pais pais = paisRepository.findByNome(request.getPais());
+		
 		if (autor == null) {
 			return ResponseEntity.badRequest().body("O autor não existe");
 		}
 
-		return ResponseEntity.ok(livroRepository.save(new Livro(request, autor)));
+		if (idioma == null) {
+			return ResponseEntity.badRequest().body("O idioma não existe");
+		}
+
+		if (pais == null) {
+			return ResponseEntity.badRequest().body("O pais não existe");
+		}
+
+		return ResponseEntity.ok(livroRepository.save(new Livro(request, autor, idioma, pais)));
 	}
 
 }

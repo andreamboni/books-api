@@ -1,8 +1,6 @@
 package com.books.request;
 
 import com.books.model.Formato;
-import com.books.model.Idioma;
-import com.books.model.Pais;
 import com.books.model.enums.Acabamento;
 import com.books.model.enums.Tipo;
 
@@ -19,8 +17,8 @@ public class LivroRequest {
     private Integer anoEdicao;
     private String genero;
     private Acabamento acabamento;
-    private Idioma idioma;
-    private Pais pais;
+    private String idioma;
+    private String pais;
     private Integer quantideLivros;
 
     public String getColecao() {
@@ -111,19 +109,19 @@ public class LivroRequest {
         this.acabamento = acabamento;
     }
 
-    public Idioma getIdioma() {
+    public String getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(Idioma idioma) {
+    public void setIdioma(String idioma) {
         this.idioma = idioma;
     }
 
-    public Pais getPais() {
+    public String getPais() {
         return pais;
     }
 
-    public void setPais(Pais pais) {
+    public void setPais(String pais) {
         this.pais = pais;
     }
 

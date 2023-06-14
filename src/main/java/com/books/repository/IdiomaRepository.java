@@ -7,4 +7,5 @@ import com.books.model.Idioma;
 
 @Repository
 public interface IdiomaRepository extends JpaRepository<Idioma, Long>{
+    Idioma findByNome(String nome);
 }

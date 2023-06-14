@@ -73,7 +73,7 @@ public class Livro {
 	public Livro() {
 	}
 
-	public Livro(LivroRequest request, Autor autor) {
+	public Livro(LivroRequest request, Autor autor, Idioma idioma, Pais pais) {
 		this.colecao = request.getColecao();
 		this.titulo = request.getTitulo();
 		this.autor = autor;
@@ -85,8 +85,8 @@ public class Livro {
 		this.anoEdicao = request.getAnoEdicao();
 		this.generos = request.getGenero();
 		this.acabamento = request.getAcabamento();
-		this.idioma = request.getIdioma();
-		this.pais = request.getPais();
+		this.idioma = idioma;
+		this.pais = pais;
 		this.quantidadeLivros = request.getQuantideLivros();
 	}
 
