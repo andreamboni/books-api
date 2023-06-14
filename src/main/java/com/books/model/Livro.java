@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.books.model.enums.Acabamento;
-import com.books.model.enums.Idioma;
 import com.books.model.enums.Tipo;
 import com.books.request.LivroRequest;
 
@@ -60,8 +59,8 @@ public class Livro {
 	@Enumerated(EnumType.STRING)
 	private Acabamento acabamento;
 
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
+	@ManyToOne
+	@JoinColumn(name = "idioma_id")
 	private Idioma idioma;
 
 	@ManyToOne
