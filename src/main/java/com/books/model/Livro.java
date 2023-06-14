@@ -13,7 +13,6 @@ import javax.persistence.Table;
 
 import com.books.model.enums.Acabamento;
 import com.books.model.enums.Idioma;
-import com.books.model.enums.Pais;
 import com.books.model.enums.Tipo;
 import com.books.request.LivroRequest;
 
@@ -65,8 +64,8 @@ public class Livro {
 	@Enumerated(EnumType.STRING)
 	private Idioma idioma;
 
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
+	@ManyToOne
+	@JoinColumn(name = "pais_id")
 	private Pais pais;
 
 	@Column(nullable = false)
