@@ -2,21 +2,24 @@
 
 ## TODO: 
 
-+ [] Restante dos métodos CRUD
-+ [] Cardinalidade banco 
-+ [x] Converti as classes para portugues
++ [x] Converter as classes para portugues
 + Tipos dos campos: 
     + Talvez uma classe para o ``author``
     + Enum pro 
         + [x] ``tipo`` 
         + [x] ``formato``
         + [x] ``acabamento``
-        + [x] ``idioma``
-        + [x] ``pais``
     + [] Criar uma classe ``generos`` com uma tabela auxiliar
+    + [] Fazer classe especifica para ``pais``
+        + criar migration para associar na tabela livros
+    + [] Fazer classe especifica para ``idioma``
+        + criar migration para associar na tabela livros
+    + [] Cardinalidade banco 
++ [] Restante dos métodos CRUD
 + [] Talvez um DTO, achar uma melhor forma de transmitir a informação
 + [] Fazer os ids do banco contar a partir do 1000
 + [] Tratar melhor as exceções
++ [] Adicionar logs se necessário
 
 
 ### Exemplo de tratamento global de exceções
