@@ -10,10 +10,10 @@
         + [x] ``formato``
         + [x] ``acabamento``
     + [] Criar uma classe ``generos`` com uma tabela auxiliar
-    + [] Fazer classe especifica para ``pais``
-        + criar migration para associar na tabela livros
-    + [] Fazer classe especifica para ``idioma``
-        + criar migration para associar na tabela livros
+    + [x] Fazer classe especifica para ``pais``
+        + [x] criar migration para associar na tabela livros
+    + [x] Fazer classe especifica para ``idioma``
+        + [x] criar migration para associar na tabela livros
     + [] Cardinalidade banco 
 + [] Restante dos métodos CRUD
 + [] Talvez um DTO, achar uma melhor forma de transmitir a informação
