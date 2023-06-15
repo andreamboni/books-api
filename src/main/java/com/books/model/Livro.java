@@ -20,7 +20,7 @@ import com.books.request.LivroRequest;
 public class Livro {
 
 	// @TableGenerator(name = "id_generator", table = "livros", pkColumnName = "sequence_name", valueColumnName = "next_value", allocationSize = 1, initialValue = 100)
-	@Id	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String colecao;

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Autor {
 
 	// @TableGenerator(name = "id_generator", table = "autores", pkColumnName = "sequence_name", valueColumnName = "next_value", allocationSize = 1, initialValue = 200)
-	@Id	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(nullable = false)

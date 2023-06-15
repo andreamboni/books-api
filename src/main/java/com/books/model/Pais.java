@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "paises")
 public class Pais {
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
