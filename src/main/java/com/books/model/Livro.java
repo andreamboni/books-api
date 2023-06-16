@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import com.books.model.enums.Acabamento;
 import com.books.model.enums.Tipo;
 import com.books.request.LivroRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "livros")
@@ -27,6 +28,7 @@ public class Livro {
 	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@JsonIgnore
 	private String colecao;
 
 	@Column(nullable = false)
@@ -82,7 +84,7 @@ public class Livro {
 	public Livro() {
 	}
 
-	public Livro(LivroRequest request, Autor autor, Idioma idioma, Pais pais) {
+	public Livro(LivroRequest request, Autor autor, Idioma idioma, Pais pais, List<Genero> generos) {
 		this.colecao = request.getColecao();
 		this.titulo = request.getTitulo();
 		this.autor = autor;
@@ -92,7 +94,7 @@ public class Livro {
 		this.quantidadePaginas = request.getQuantidadePaginas();
 		this.edicao = request.getEdicao();
 		this.anoEdicao = request.getAnoEdicao();
-		this.generos = request.getGeneros();
+		this.generos = generos;
 		this.acabamento = request.getAcabamento();
 		this.idioma = idioma;
 		this.pais = pais;

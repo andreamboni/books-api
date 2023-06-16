@@ -1,5 +1,6 @@
 package com.books.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.books.model.Autor;
+import com.books.model.Genero;
 import com.books.model.Idioma;
 import com.books.model.Livro;
 import com.books.model.Pais;
@@ -52,13 +54,14 @@ public class LivroController {
 		Autor autor = autorRepository.findByNome(request.getAutor());
 		Idioma idioma = idiomaRepository.findByNome(request.getIdioma());
 		Pais pais = paisRepository.findByNome(request.getPais());
-
+		List<Genero> generos = new ArrayList<Genero>();
+	
 		for(String genero : request.getGeneros()) {
-
-			if (generoRepository.findByNome(genero) == null) {
+			Genero generoTemp = generoRepository.findByNome(genero);
+			if (generoTemp == null) {
 				return ResponseEntity.badRequest().body("O genero " + genero + " não existe");
 			}
-
+			generos.add(generoTemp);
 		}
 
 		if (autor == null) {
@@ -73,7 +76,7 @@ public class LivroController {
 			return ResponseEntity.badRequest().body("O pais não existe");
 		}
 
-		return ResponseEntity.ok(livroRepository.save(new Livro(request, autor, idioma, pais)));
+		return ResponseEntity.ok(livroRepository.save(new Livro(request, autor, idioma, pais, generos)));
 	}
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "autores")
@@ -28,7 +29,7 @@ public class Autor {
 	@Column(nullable = false) @JsonFormat(pattern="yyyy-MM-dd")
 	private Date dataNascimento;
 	
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern="yyyy-MM-dd") @JsonIgnore
 	private Date dataMorte;
 
 	public Long getId() {
