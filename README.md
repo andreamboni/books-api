@@ -9,17 +9,18 @@
         + [x] ``tipo`` 
         + [x] ``formato``
         + [x] ``acabamento``
-    + [] Criar uma classe ``generos`` com uma tabela auxiliar
+    + [x] Criar uma classe ``generos`` com uma tabela auxiliar
     + [x] Fazer classe especifica para ``pais``
         + [x] criar migration para associar na tabela livros
     + [x] Fazer classe especifica para ``idioma``
         + [x] criar migration para associar na tabela livros
-    + [] Cardinalidade banco 
+    + [] Criar uma tabela para ``colecao``
+    + [x] Cardinalidade banco 
 + [] Restante dos métodos CRUD
-+ [] Talvez um DTO, achar uma melhor forma de transmitir a informação
 + [] Fazer os ids do banco contar a partir do 1000
 + [] Tratar melhor as exceções
 + [] Adicionar logs se necessário
++ [] Desacoplar algumas coisas
 
 
 ### Exemplo de tratamento global de exceções
