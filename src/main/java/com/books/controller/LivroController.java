@@ -16,6 +16,7 @@ import com.books.model.Idioma;
 import com.books.model.Livro;
 import com.books.model.Pais;
 import com.books.repository.AutorRepository;
+import com.books.repository.GeneroRepository;
 import com.books.repository.IdiomaRepository;
 import com.books.repository.LivroRepository;
 import com.books.repository.PaisRepository;
@@ -38,6 +39,9 @@ public class LivroController {
 	@Autowired
 	private PaisRepository paisRepository;
 
+	@Autowired
+	private GeneroRepository generoRepository;
+
 	@GetMapping(value = "getLivros")
 	public List<Livro> getAllMyBooks() {
 		return livroRepository.findAll();
@@ -48,7 +52,15 @@ public class LivroController {
 		Autor autor = autorRepository.findByNome(request.getAutor());
 		Idioma idioma = idiomaRepository.findByNome(request.getIdioma());
 		Pais pais = paisRepository.findByNome(request.getPais());
-		
+
+		for(String genero : request.getGeneros()) {
+
+			if (generoRepository.findByNome(genero) == null) {
+				return ResponseEntity.badRequest().body("O genero " + genero + " não existe");
+			}
+
+		}
+
 		if (autor == null) {
 			return ResponseEntity.badRequest().body("O autor não existe");
 		}

@@ -1,5 +1,7 @@
 package com.books.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -52,8 +56,13 @@ public class Livro {
 	@Column(nullable = false)
 	private Integer anoEdicao;
 
-	@Column(nullable = false)
-	private String generos;
+	@ManyToMany
+    @JoinTable(
+        name = "livro_genero",
+        joinColumns = @JoinColumn(name = "livro_id"),
+        inverseJoinColumns = @JoinColumn(name = "genero_id")
+    )
+	private List<Genero> generos;
 
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
@@ -83,7 +92,7 @@ public class Livro {
 		this.quantidadePaginas = request.getQuantidadePaginas();
 		this.edicao = request.getEdicao();
 		this.anoEdicao = request.getAnoEdicao();
-		this.generos = request.getGenero();
+		this.generos = request.getGeneros();
 		this.acabamento = request.getAcabamento();
 		this.idioma = idioma;
 		this.pais = pais;
@@ -170,11 +179,11 @@ public class Livro {
 		this.anoEdicao = anoEdicao;
 	}
 
-	public String getGeneros() {
+	public List<Genero> getGeneros() {
 		return generos;
 	}
 
-	public void setGeneros(String generos) {
+	public void setGeneros(List<Genero> generos) {
 		this.generos = generos;
 	}
 

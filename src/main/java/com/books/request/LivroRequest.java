@@ -1,5 +1,7 @@
 package com.books.request;
 
+import java.util.List;
+
 import com.books.model.Formato;
 import com.books.model.enums.Acabamento;
 import com.books.model.enums.Tipo;
@@ -15,7 +17,7 @@ public class LivroRequest {
     private Integer quantidadePaginas;
     private Integer edicao;
     private Integer anoEdicao;
-    private String genero;
+    private List<String> generos;
     private Acabamento acabamento;
     private String idioma;
     private String pais;
@@ -93,12 +95,12 @@ public class LivroRequest {
         this.anoEdicao = anoEdicao;
     }
 
-    public String getGenero() {
-        return genero;
+    public List<String> getGeneros() {
+        return generos;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setGeneros(List<String> generos) {
+        this.generos = generos;
     }
 
     public Acabamento getAcabamento() {
