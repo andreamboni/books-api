@@ -14,13 +14,16 @@
         + [x] criar migration para associar na tabela livros
     + [x] Fazer classe especifica para ``idioma``
         + [x] criar migration para associar na tabela livros
-    + [] Criar uma tabela para ``colecao``
+    + [x] Criar uma tabela para ``colecao``
+    + [] Trocar o ``quantidadePaginas`` para Int
+    + [] Arrumar formato da ``dataMorte`` do Autor e também verificar pq está voltando null no response
     + [x] Cardinalidade banco 
 + [] Restante dos métodos CRUD
 + [] Fazer os ids do banco contar a partir do 1000
 + [] Tratar melhor as exceções
 + [] Adicionar logs se necessário
 + [] Desacoplar algumas coisas
++ [] Quando for criar o banco real da aplicação, arrumar o nome das migrations ou não fazer os alter tables
 
 
 ### Exemplo de tratamento global de exceções
