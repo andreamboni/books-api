@@ -28,8 +28,9 @@ public class Livro {
 	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@JsonIgnore
-	private String colecao;
+	@ManyToOne
+	@JoinColumn(name = "colecao_id") @JsonIgnore
+	private Colecao colecao;
 
 	@Column(nullable = false)
 	private String titulo;
@@ -84,8 +85,8 @@ public class Livro {
 	public Livro() {
 	}
 
-	public Livro(LivroRequest request, Autor autor, Idioma idioma, Pais pais, List<Genero> generos) {
-		this.colecao = request.getColecao();
+	public Livro(LivroRequest request, Autor autor, Idioma idioma, Pais pais, List<Genero> generos, Colecao colecao) {
+		this.colecao = colecao;
 		this.titulo = request.getTitulo();
 		this.autor = autor;
 		this.editora = request.getEditora();
@@ -109,11 +110,11 @@ public class Livro {
 		this.id = id;
 	}
 
-	public String getColecao() {
+	public Colecao getColecao() {
 		return colecao;
 	}
 
-	public void setColecao(String colecao) {
+	public void setColecao(Colecao colecao) {
 		this.colecao = colecao;
 	}
 
