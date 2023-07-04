@@ -7,30 +7,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Getter;
+
 @Entity
 @Table(name = "idiomas")
+@Builder
+@Getter
 public class Idioma {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String nome;
 
-    public Long getId() {
-        return id;
-    }
+    public Idioma(){}
 
-    public void setId(Long id) {
+    public Idioma(Long id, String nome) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
         this.nome = nome;
     }
-
 }
