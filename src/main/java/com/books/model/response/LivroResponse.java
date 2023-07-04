@@ -1,4 +1,4 @@
-package com.books.controller;
+package com.books.model.response;
 
 import java.util.HashMap;
 import java.util.Map;

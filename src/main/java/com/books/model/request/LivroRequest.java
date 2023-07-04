@@ -1,9 +1,9 @@
-package com.books.request;
+package com.books.model.request;
 
 import java.util.List;
 
-import com.books.model.Formato;
 import com.books.model.enums.Acabamento;
+import com.books.model.enums.Formato;
 import com.books.model.enums.Tipo;
 
 import lombok.Getter;

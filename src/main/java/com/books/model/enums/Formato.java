@@ -1,4 +1,4 @@
-package com.books.model;
+package com.books.model.enums;
 
 public enum Formato {
 

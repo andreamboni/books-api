@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.books.model.enums.Acabamento;
+import com.books.model.enums.Formato;
 import com.books.model.enums.Tipo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

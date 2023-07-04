@@ -7,20 +7,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.books.controller.LivroResponse;
 import com.books.model.Autor;
 import com.books.model.Colecao;
 import com.books.model.Genero;
 import com.books.model.Idioma;
 import com.books.model.Livro;
 import com.books.model.Pais;
+import com.books.model.request.LivroRequest;
+import com.books.model.response.LivroResponse;
 import com.books.repository.AutorRepository;
 import com.books.repository.ColecaoRepository;
 import com.books.repository.GeneroRepository;
 import com.books.repository.IdiomaRepository;
 import com.books.repository.LivroRepository;
 import com.books.repository.PaisRepository;
-import com.books.request.LivroRequest;
 
 @Service
 public class LivroService {

@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.books.model.Livro;
+import com.books.model.request.LivroRequest;
+import com.books.model.response.LivroResponse;
 import com.books.repository.LivroRepository;
-import com.books.request.LivroRequest;
 import com.books.service.LivroService;
 
 @RestController
