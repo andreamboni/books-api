@@ -17,19 +17,21 @@ import javax.persistence.Table;
 
 import com.books.model.enums.Acabamento;
 import com.books.model.enums.Tipo;
-import com.books.request.LivroRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Builder;
+import lombok.Getter;
 
 @Entity
 @Table(name = "livros")
+@Builder
+@Getter
 public class Livro {
 
-	// @TableGenerator(name = "id_generator", table = "livros", pkColumnName = "sequence_name", valueColumnName = "next_value", allocationSize = 1, initialValue = 100)
 	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "colecao_id") @JsonIgnore
+	@ManyToOne @JoinColumn(name = "colecao_id") @JsonIgnore
 	private Colecao colecao;
 
 	@Column(nullable = false)
@@ -60,11 +62,7 @@ public class Livro {
 	private Integer anoEdicao;
 
 	@ManyToMany
-    @JoinTable(
-        name = "livro_genero",
-        joinColumns = @JoinColumn(name = "livro_id"),
-        inverseJoinColumns = @JoinColumn(name = "genero_id")
-    )
+	@JoinTable(name = "livro_genero", joinColumns = @JoinColumn(name = "livro_id"), inverseJoinColumns = @JoinColumn(name = "genero_id"))
 	private List<Genero> generos;
 
 	@Column(nullable = false)
@@ -85,140 +83,23 @@ public class Livro {
 	public Livro() {
 	}
 
-	public Livro(LivroRequest request, Autor autor, Idioma idioma, Pais pais, List<Genero> generos, Colecao colecao) {
-		this.colecao = colecao;
-		this.titulo = request.getTitulo();
-		this.autor = autor;
-		this.editora = request.getEditora();
-		this.tipo = request.getTipo();
-		this.formato = request.getFormato();
-		this.quantidadePaginas = request.getQuantidadePaginas();
-		this.edicao = request.getEdicao();
-		this.anoEdicao = request.getAnoEdicao();
-		this.generos = generos;
-		this.acabamento = request.getAcabamento();
-		this.idioma = idioma;
-		this.pais = pais;
-		this.quantidadeLivros = request.getQuantideLivros();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
+	public Livro(Long id, Colecao colecao, String titulo, Autor autor, String editora, Tipo tipo, Formato formato,
+			Integer quantidadePaginas, Integer edicao, Integer anoEdicao, List<Genero> generos, Acabamento acabamento,
+			Idioma idioma, Pais pais, Integer quantidadeLivros) {
 		this.id = id;
-	}
-
-	public Colecao getColecao() {
-		return colecao;
-	}
-
-	public void setColecao(Colecao colecao) {
 		this.colecao = colecao;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-
-	public Autor getAutor() {
-		return autor;
-	}
-
-	public void setAutor(Autor autor) {
 		this.autor = autor;
-	}
-
-	public String getEditora() {
-		return editora;
-	}
-
-	public void setEditora(String editora) {
 		this.editora = editora;
-	}
-
-	public Tipo getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
-	}
-
-	public Formato getFormato() {
-		return formato;
-	}
-
-	public void setFormato(Formato formato) {
 		this.formato = formato;
-	}
-
-	public Integer getQuantidadePaginas() {
-		return quantidadePaginas;
-	}
-
-	public void setQuantidadePaginas(Integer quantidadePaginas) {
 		this.quantidadePaginas = quantidadePaginas;
-	}
-
-	public Integer getEdicao() {
-		return edicao;
-	}
-
-	public void setEdicao(Integer edicao) {
 		this.edicao = edicao;
-	}
-
-	public Integer getAnoEdicao() {
-		return anoEdicao;
-	}
-
-	public void setAnoEdicao(Integer anoEdicao) {
 		this.anoEdicao = anoEdicao;
-	}
-
-	public List<Genero> getGeneros() {
-		return generos;
-	}
-
-	public void setGeneros(List<Genero> generos) {
 		this.generos = generos;
-	}
-
-	public Acabamento getAcabamento() {
-		return acabamento;
-	}
-
-	public void setAcabamento(Acabamento acabamento) {
 		this.acabamento = acabamento;
-	}
-
-	public Idioma getIdioma() {
-		return idioma;
-	}
-
-	public void setIdioma(Idioma idioma) {
 		this.idioma = idioma;
-	}
-
-	public Pais getPais() {
-		return pais;
-	}
-
-	public void setPais(Pais pais) {
 		this.pais = pais;
-	}
-
-	public Integer getQuantidadeLivros() {
-		return quantidadeLivros;
-	}
-
-	public void setQuantidadeLivros(Integer quantidadeLivros) {
 		this.quantidadeLivros = quantidadeLivros;
 	}
 
