@@ -15,15 +15,20 @@
     + [x] Fazer classe especifica para ``idioma``
         + [x] criar migration para associar na tabela livros
     + [x] Criar uma tabela para ``colecao``
-    + [] Trocar o ``quantidadePaginas`` para Int
-    + [] Arrumar formato da ``dataMorte`` do Autor e também verificar pq está voltando null no response
+    + [x] Trocar o ``quantidadePaginas`` para Int
+    + [x] Arrumar formato da ``dataMorte`` do Autor e também verificar pq está voltando null no response
     + [x] Cardinalidade banco 
-+ [] Restante dos métodos CRUD
-+ [] Fazer os ids do banco contar a partir do 1000
++ [x] Acumular os erros para mostrar tudo o que está de errado com o request
++ [x] Restante dos métodos CRUD
++ [x] Desacoplar algumas coisas
+
+## Backlog
+
 + [] Tratar melhor as exceções
++ [] Fazer os ids do banco contar a partir do 1000
 + [] Adicionar logs se necessário
-+ [] Desacoplar algumas coisas
 + [] Quando for criar o banco real da aplicação, arrumar o nome das migrations ou não fazer os alter tables
++ [] Criar testes de integração
 
 
 ### Exemplo de tratamento global de exceções
