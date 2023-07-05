@@ -64,7 +64,7 @@ public class AutorController {
         }
 
         autorRepository.delete(optionalAutor.get());
-        return ResponseEntity.ok().body("O autor " + optionalAutor.get().getNome() + " foi deletado com sucesso.");
+        return ResponseEntity.ok().body("O autor '" + optionalAutor.get().getNome() + "' foi deletado com sucesso.");
     }
 
 }

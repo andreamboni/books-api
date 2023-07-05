@@ -1,6 +1,7 @@
 package com.books.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,8 +51,14 @@ public class LivroController {
 
 	@DeleteMapping(path = "deleteLivro/{id}")
 	public ResponseEntity<String> deleteLivro(@PathVariable Long id) {
+		Optional<Livro> optionalLivro = livroRepository.findById(id);
+
+        if(optionalLivro.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
 		livroRepository.deleteById(id);
-		return ResponseEntity.ok("Livro foi deleteado com sucesso");
+		return ResponseEntity.ok().body("O livro '" + optionalLivro.get().getTitulo() + "' foi deletado com sucesso.");
 	}
 
 }

@@ -61,7 +61,7 @@ public class PaisController {
         }
 
         paisRepository.delete(optionalPais.get());
-        return ResponseEntity.ok().body("O país " + optionalPais.get().getNome() + " foi deletado com sucesso.");
+        return ResponseEntity.ok().body("O país '" + optionalPais.get().getNome() + "' foi deletado com sucesso.");
     }
 
 }

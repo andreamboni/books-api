@@ -60,7 +60,7 @@ public class IdiomaController {
         }
 
         idiomaRepository.delete(optionalIdioma.get());
-        return ResponseEntity.ok().body("O idioma " + optionalIdioma.get().getNome() + " foi deletado com sucesso.");
+        return ResponseEntity.ok().body("O idioma '" + optionalIdioma.get().getNome() + "' foi deletado com sucesso.");
     }
 
 }
