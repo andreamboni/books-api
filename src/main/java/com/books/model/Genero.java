@@ -7,8 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Getter;
+
 @Entity
 @Table(name = "generos")
+@Builder
+@Getter
 public class Genero {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,20 +22,10 @@ public class Genero {
     @Column(nullable = false)
     private String nome;
 
-    public Long getId() {
-        return id;
-    }
+    public Genero(){}
 
-    public void setId(Long id) {
+    public Genero(Long id, String nome) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
         this.nome = nome;
     }
-
 }

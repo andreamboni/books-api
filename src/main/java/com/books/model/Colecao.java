@@ -7,30 +7,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Getter;
+
 @Entity
 @Table(name = "colecoes")
+@Builder
+@Getter
 public class Colecao {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String nome;
 
-    public Long getId() {
-        return id;
-    }
+    public Colecao(){}
 
-    public void setId(Long id) {
+    public Colecao(Long id, String nome) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
         this.nome = nome;
     }
-
 }
