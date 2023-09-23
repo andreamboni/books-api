@@ -48,7 +48,7 @@ public class LivroService {
 
 		Optional<Pais> optionalPais = paisRepository.findByNome(request.getPais());
         Optional<Autor> optionalAutor = autorRepository.findByNome(request.getAutor());
-		Optional<Idioma> optionalIdioma = idiomaRepository.findByNome(request.getIdioma());
+		Optional<Idioma> optionalIdioma = idiomaRepository.findByNomeOptional(request.getIdioma());
 		Optional<Colecao> optionalColecao = colecaoRepository.findByNome(request.getColecao());
 
 		List<Genero> generos = validateGeneros(request.getGeneros(), response);
@@ -106,7 +106,7 @@ public class LivroService {
 
 		Optional<Pais> pais = paisRepository.findByNome(request.getPais());
         Optional<Autor> autor = autorRepository.findByNome(request.getAutor()); 
-		Optional<Idioma> idioma = idiomaRepository.findByNome(request.getIdioma()); 
+		Optional<Idioma> idioma = idiomaRepository.findByNomeOptional(request.getIdioma()); 
 		Optional<Colecao> colecao = colecaoRepository.findByNome(request.getColecao());
 
 		if(request.getColecao() != null && colecao.isEmpty()) {
