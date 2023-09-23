@@ -8,9 +8,11 @@ import com.books.model.enums.Tipo;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class LivroRequest {
     private String colecao;
     private String titulo;

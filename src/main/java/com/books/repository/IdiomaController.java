@@ -3,6 +3,8 @@ package com.books.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.books.model.Idioma;
@@ -22,11 +25,26 @@ import com.books.model.Idioma;
 @CrossOrigin
 public class IdiomaController {
     
+    private static final Logger LOGGER = LogManager.getLogger(IdiomaController.class);
+
     @Autowired
     private IdiomaRepository idiomaRepository;
 
     @GetMapping(path = "getIdiomas")
     public ResponseEntity<List<Idioma>> getIdiomas() {
+        return ResponseEntity.ok(idiomaRepository.findAll());
+    }
+
+    @GetMapping(path = "searchIdioma")
+    public ResponseEntity<List<Idioma>> searchIdioma(@RequestParam(name = "idioma", required = false) String idioma) {
+        LOGGER.info(">> IdiomaController.searchIdioma");
+        
+        if(idioma != null) {
+            LOGGER.info("<< IdiomaController.searchIdioma idioma is not null");
+            return ResponseEntity.ok(idiomaRepository.findByNomeContaining(idioma));
+        }
+        
+        LOGGER.info("<< IdiomaController.searchIdioma");
         return ResponseEntity.ok(idiomaRepository.findAll());
     }
 
